@@ -1,0 +1,16 @@
+:root,
+[data-color-mode="light"] {
+  $background-color: #fff;
+  $title-color: #292d35;
+  $icon-color: #9da2ac;
+  $border-color: #e5e5e5;
+  $border-secondary-color: #dee2e6;
+  $font-color: #333;
+  $icon-secondary-color: #bdc0d3;
+  $disabled-color: #b1b1b1;
+}
+
+[data-color-mode="dark"] {
+  $background-color: #1a1d24;
+  $font-color: #f2f2f2;
+}

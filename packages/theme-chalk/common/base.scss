@@ -1,0 +1,27 @@
+@use "sass:color";
+
+$t-default: #172b4d;
+$t-primary: #5e72e4;
+$t-success: #2dce89;
+$t-info: #11cdef;
+$t-warning: #fb6340;
+$t-danger: #f5365c;
+
+$t-border-color: #dcdfe6;
+$t-bg-color: #fff;
+$t-text-color: #606266;
+$t-placeholder-color: #bfc3d6;
+$t-hover-color: #f2f2f2;
+$t-icon-fill-color: #ccc;
+$t-shadow: rgba(0, 0, 0, 0.12);
+
+$t-primary-lighten: color.adjust($t-primary, $lightness: 23%);
+$t-success-lighten: color.adjust($t-success, $lightness: 45%);
+$t-info-lighten: color.adjust($t-info, $lightness: 39%);
+$t-warning-lighten: color.adjust($t-warning, $lightness: 35%);
+$t-danger-lighten: color.adjust($t-danger, $lightness: 35%);
+
+$t-success-border: color.adjust($t-success, $lightness: 30%);
+$t-info-border: color.adjust($t-info, $lightness: 30%);
+$t-warning-border: color.adjust($t-warning, $lightness: 30%);
+$t-danger-border: color.adjust($t-danger, $lightness: 30%);
