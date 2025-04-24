@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>1111</p>
+    <t-button>222</t-button>
   </div>
 </template>
 

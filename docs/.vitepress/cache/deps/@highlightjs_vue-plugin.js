@@ -1,13 +1,13 @@
 import {
+  require_core
+} from "./chunk-DQWWQFJ7.js";
+import {
   computed,
   defineComponent,
   h,
   ref,
   watch
 } from "./chunk-QXP276DV.js";
-import {
-  require_core
-} from "./chunk-DQWWQFJ7.js";
 import {
   __toESM
 } from "./chunk-5WRI5ZAA.js";

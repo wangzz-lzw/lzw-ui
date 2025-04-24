@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});require("../theme-chalk/index.scss.js");const n=require("./components.js"),r={install(e){Object.entries(n).forEach(([t,o])=>{e.component(t,o)})}};exports.default=r;

@@ -14,7 +14,11 @@ export default defineConfig({
       "/components/": [
         {
           text: "基本",
-          items: [{ text: "Button 按钮", link: "/components/button/" }],
+          items: [
+            { text: "Button 按钮", link: "/components/button/" },
+            { text: "Form 表单", link: "/components/form/" },
+            { text: "Input 输入框", link: "/components/input/" },
+          ],
         },
       ],
     },

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./button/index.js"),t=require("./form/index.js"),r=require("./form-item/index.js"),n=require("./input/index.js");exports.TButton=e.TButton;exports.TForm=t.TForm;exports.TFormItem=r.TFormItem;exports.TInput=n.TInput;

@@ -16,17 +16,41 @@
   </button>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { defineOptions, defineProps } from "vue";
 import { ButtonProps } from "./button";
 
 defineOptions({
   name: "t-button",
 });
 
-const BUTTON_TYPE = ["primary", "success", "warning", "info", "danger"];
-const BUTTON_SIZE = ["", "small", "mini"];
+import { PropType } from "vue";
 
-defineProps(ButtonProps);
+export interface ButtonProps {
+  type?: "primary" | "success" | "warning" | "info" | "danger";
+  size?: "" | "small" | "mini";
+  round?: boolean;
+  disabled?: boolean;
+}
+
+defineProps({
+  type: {
+    type: String as PropType<ButtonProps["type"]>,
+    default: "primary",
+  },
+  size: {
+    type: String as PropType<ButtonProps["size"]>,
+    default: "",
+  },
+  round: {
+    type: Boolean,
+    default: false,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -138,5 +162,8 @@ defineProps(ButtonProps);
   &:active:not(:disabled) {
     background: #ec0c38;
   }
+}
+.t-button + .t-button {
+  margin-left: 10px;
 }
 </style>

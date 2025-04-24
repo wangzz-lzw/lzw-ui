@@ -19,7 +19,7 @@ $t-primary-lighten: color.adjust($t-primary, $lightness: 23%);
 $t-success-lighten: color.adjust($t-success, $lightness: 45%);
 $t-info-lighten: color.adjust($t-info, $lightness: 39%);
 $t-warning-lighten: color.adjust($t-warning, $lightness: 35%);
-$t-danger-lighten: color.adjust($t-danger, $lightness: 35%);
+$t-danger-lighten: color.adjust($t-danger, $lightness: 23%);
 
 $t-success-border: color.adjust($t-success, $lightness: 30%);
 $t-info-border: color.adjust($t-info, $lightness: 30%);
