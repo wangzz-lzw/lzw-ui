@@ -21,7 +21,8 @@
     "@lzwui/theme-chalk": "workspace:^",
     "@lzwui/utils": "workspace:^",
     "highlight.js": "^11.11.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vue": "^3.5.13"
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
