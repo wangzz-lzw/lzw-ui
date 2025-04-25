@@ -1,0 +1,25 @@
+.t-tree {
+  .t-tree-node__content {
+    padding: 0 8px;
+    display: flex;
+    height: 26px;
+    gap: 6px;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+      background-color: #f0f0f0;
+    }
+    .t-icon {
+      font-size: 13px;
+      color: var(--t-icon-fill-color);
+      transition: all 0.3s ease;
+    }
+    .t-tree-node__label {
+      color: var(--t-text-color);
+    }
+  }
+  .t-tree-node__children {
+    padding-left: 20px;
+  }
+}

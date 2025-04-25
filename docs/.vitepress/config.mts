@@ -23,6 +23,7 @@ export default defineConfig({
             { text: "Button 按钮", link: "/components/button/" },
             { text: "Form 表单", link: "/components/form/" },
             { text: "Input 输入框", link: "/components/input/" },
+            { text: "Tree", link: "/components/tree/" },
           ],
         },
       ],
