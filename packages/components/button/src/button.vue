@@ -3,11 +3,11 @@
     `t-button__${type}`,
     `${size && 't-button--' + size}`,
     { 'is-round': round },
+    { 'is-circle': circle }
   ]" :disabled="disabled">
-    <div class="t-button__inner">
-      <span v-if="$slots.default">
-        <slot />
-      </span>
+    <span :class="[`${!!icon ? 't-icon icon-' + icon : ''}`]"></span>
+    <div v-if="$slots.default" class="t-button__inner">
+      <slot />
     </div>
   </button>
 </template>
@@ -27,6 +27,7 @@ export interface ButtonProps {
   size?: "" | "small" | "mini";
   round?: boolean;
   disabled?: boolean;
+  circle?: boolean;
 }
 
 defineProps({
@@ -46,6 +47,14 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  icon: {
+    type: String,
+    default: "",
+  },
+  circle: {
+    type: Boolean,
+    default: false,
+  }
 });
 </script>
 

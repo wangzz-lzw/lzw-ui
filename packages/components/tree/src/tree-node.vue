@@ -1,7 +1,7 @@
 <template>
     <div class="t-tree-node">
         <div class="t-tree-node__content" @click.stop="handleClickNode($event, node)">
-            <div class="icon t-icon icon-tubiao" :style="{
+            <div class="t-icon icon-tubiao" :style="{
                 visibility: node.children && node.children.length ? 'visible' : 'hidden',
                 transform: showChild ? 'rotateZ(90deg)' : '',
             }" @click="showChild = !showChild"></div>
