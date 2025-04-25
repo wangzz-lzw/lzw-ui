@@ -64,9 +64,11 @@ const handleClick = () => {
   border-radius: 6px;
   overflow: hidden;
 }
+
 .preview_box {
   padding: 20px;
 }
+
 .operate_btn {
   position: relative;
   height: 46px;
@@ -75,20 +77,24 @@ const handleClick = () => {
   text-align: center;
   background: #f7f7f7;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1;
 }
+
 .operate_btn:hover {
   background: #f2f2f2;
 }
+
 .code {
   border-top: 1px solid #efefef;
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.3s ease;
 }
+
 .code .code__reference {
   overflow: hidden;
 }
+
 .show_code {
   grid-template-rows: 1fr;
 }
