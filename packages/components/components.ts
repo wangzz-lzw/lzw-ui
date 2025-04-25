@@ -2,4 +2,5 @@ export { TButton } from "./button";
 export { TForm } from './form'
 export { TFormItem } from './form-item'
 export { TInput } from './input'
-export {TTree} from './tree'
+export { TTree } from './tree'
+export {TCheckbox} from './checkbox'

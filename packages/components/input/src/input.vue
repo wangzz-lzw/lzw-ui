@@ -1,6 +1,6 @@
 <template>
     <div class="lzw-input">
-        <input class="lzw-input__inner" @input="handleInput"/>
+        <input class="lzw-input__inner" @input="handleInput" />
     </div>
 </template>
 
@@ -26,30 +26,4 @@ const handleInput = (e: Event) => {
 }
 </script>
 
-<style scoped lang="scss">
-@use "../../../theme-chalk/common/base.scss" as *;
-.lzw-input {
-        width: 100%;
-        border-radius: 4px;
-        border: 1px solid $t-border-color;
-
-        &:focus-within {
-            border-color: $t-primary;
-            box-shadow: 0 0 0 1px $t-primary-lighten;
-        }
-        &:hover {
-            border-color: $t-primary;
-            box-shadow: 0 0 0 1px $t-primary-lighten;
-        }
-        & .lzw-input__inner {
-            width: 100%;
-            height: 40px;
-            box-sizing: border-box;
-            outline: none;
-            padding: 0 12px;
-            &::placeholder {
-                color: $t-placeholder-color;
-            }
-        }
-}
-</style>
+<style scoped lang="scss"></style>

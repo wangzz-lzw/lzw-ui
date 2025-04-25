@@ -24,6 +24,7 @@ export default defineConfig({
             { text: "Form 表单", link: "/components/form/" },
             { text: "Input 输入框", link: "/components/input/" },
             { text: "Tree", link: "/components/tree/" },
+            { text: "Checkbox", link: "/components/checkbox/" },
           ],
         },
       ],

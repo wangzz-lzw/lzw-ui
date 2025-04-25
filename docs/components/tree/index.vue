@@ -1,5 +1,5 @@
 <template>
-    <t-tree :data="treeData" @handleClickNode="handleClickNode" />
+    <t-tree :data="treeData" @handleClickNode="handleClickNode" @onSelectedChange="onSelectedChange" />
 </template>
 
 <script setup lang="ts">
@@ -81,4 +81,8 @@ const treeData = [
 const handleClickNode = (e: Event, node: any) => {
     // console.log(e, node);
 };
+
+const onSelectedChange = (data) => {
+    console.log(data, 'data')
+}
 </script>

@@ -1,13 +1,9 @@
 <template>
-  <button
-    class="t-button"
-    :class="[
-      `t-button__${type}`,
-      `${size && 't-button--' + size}`,
-      { 'is-round': round },
-    ]"
-    :disabled="disabled"
-  >
+  <button class="t-button" :class="[
+    `t-button__${type}`,
+    `${size && 't-button--' + size}`,
+    { 'is-round': round },
+  ]" :disabled="disabled">
     <div class="t-button__inner">
       <span v-if="$slots.default">
         <slot />
@@ -53,117 +49,4 @@ defineProps({
 });
 </script>
 
-<style lang="scss" scoped>
-@use "../../../theme-chalk/common/base.scss" as *;
-.t-button {
-  display: inline-block;
-  white-space: nowrap;
-  cursor: pointer;
-  background-color: #fff;
-  border: 1px solid #fff;
-  text-align: center;
-  box-sizing: border-box;
-  outline: none;
-  font-weight: 500;
-  line-height: 1;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  min-width: 98px;
-  padding: 12px 18px;
-  font-size: 14px;
-  border-radius: 4px;
-  box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
-  &:hover:not(:disabled) {
-    box-shadow: 0 7px 14px rgb(50 50 93 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
-  }
-}
-
-.t-button > .button__inner {
-  display: flex;
-  align-items: center;
-}
-
-.t-button.t-button--small {
-  min-width: 92px;
-  padding: 10px 18px;
-}
-.t-button.t-button--mini {
-  min-width: 80px;
-  padding: 9px 15px;
-  font-size: 12px;
-  border-radius: 3px;
-}
-.t-button.t-button--icon {
-  min-width: 40px;
-  padding: 8px 15px;
-  font-size: 18px;
-  border-radius: 4px;
-}
-.t-button.is-round {
-  box-sizing: border-box;
-  border-radius: 20px;
-}
-
-.t-button.is-disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-.t-button__default {
-  color: $t-primary;
-  background-color: transparent;
-  &:active:not(:disabled) {
-    background: #e6e6e6;
-    border-color: #e6e6e6;
-    color: $t-default;
-    box-shadow: 0 0 0 transparent;
-  }
-}
-
-.t-button__primary {
-  color: #fff;
-  background-color: $t-primary;
-  border-color: $t-primary;
-  &:active:not(:disabled) {
-    background: #324cdd;
-  }
-}
-.t-button__success {
-  color: #fff;
-  background-color: $t-success;
-  border-color: $t-success;
-  &:active:not(:disabled) {
-    background: #24a46d;
-  }
-}
-.t-button__warning {
-  color: #fff;
-  background-color: $t-warning;
-  border-color: $t-warning;
-  &:active:not(:disabled) {
-    background: #fa3a0e;
-  }
-}
-
-.t-button__info {
-  color: #fff;
-  background-color: $t-info;
-  border-color: $t-info;
-  &:active:not(:disabled) {
-    background: #0da5c0;
-  }
-}
-
-.t-button__danger {
-  color: #fff;
-  background-color: $t-danger;
-  border-color: $t-danger;
-  &:active:not(:disabled) {
-    background: #ec0c38;
-  }
-}
-.t-button + .t-button {
-  margin-left: 10px;
-}
-</style>
+<style lang="scss" scoped></style>

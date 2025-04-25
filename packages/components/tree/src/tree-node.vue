@@ -5,12 +5,13 @@
                 visibility: node.children && node.children.length ? 'visible' : 'hidden',
                 transform: showChild ? 'rotateZ(90deg)' : '',
             }" @click="showChild = !showChild"></div>
+            <t-checkbox v-model="checked" @click.stop="onSelectedChange"></t-checkbox>
             <span class="t-tree-node__label">{{ node.label }}</span>
         </div>
         <!-- children -->
         <div class="t-tree-node__children" v-show="showChild">
             <t-tree-node v-for="child in node.children" :key="child.id" :node="child"
-                @handleClickNode="emits('handleClickNode', $event)" />
+                @handleClickNode="emits('handleClickNode', $event)" @onSelectedChange="onSelectedChange" />
         </div>
     </div>
 </template>
@@ -35,7 +36,9 @@ const props = defineProps(
 
 const showChild = ref(false);
 
-const emits = defineEmits(["handleClickNode"])
+const checked = ref(false);
+
+const emits = defineEmits(["handleClickNode", "onSelectedChange"])
 const handleClickNode = (e: Event, node: TreeNodeProps) => {
     showChild.value = !showChild.value;
     emits("handleClickNode", {
@@ -43,6 +46,14 @@ const handleClickNode = (e: Event, node: TreeNodeProps) => {
         $event: e, // 这边是携带上原生的事件对象，方便外部使用
     });
 };
+
+const onSelectedChange = () => {
+    console.log('props', props.node);
+    emits('onSelectedChange', {
+        node: props.node,
+        checked: checked.value
+    })
+}
 
 </script>
 

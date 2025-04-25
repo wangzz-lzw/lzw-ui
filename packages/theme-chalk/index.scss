@@ -1,4 +1,8 @@
-@use "./common/base.scss";
-@use "./common/theme.scss";
+@use "./common/base.scss" as *;
+@use "./common/theme.scss" as *;
 @use "./components/tree.scss";
 @use "./components/icon.scss";
+@use "./components/button.scss";
+@use "./components/form.scss";
+@use "./components/checkbox.scss";
+@use "./components/input.scss";

@@ -1,3 +1,4 @@
+@use "../common/base.scss" as *;
 .t-tree {
   .t-tree-node__content {
     padding: 0 8px;
@@ -12,11 +13,11 @@
     }
     .t-icon {
       font-size: 13px;
-      color: var(--t-icon-fill-color);
+      color: $t-icon-fill-color;
       transition: all 0.3s ease;
     }
     .t-tree-node__label {
-      color: var(--t-text-color);
+      color: $t-text-color;
     }
   }
   .t-tree-node__children {
