@@ -4,6 +4,11 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "My Awesome Project",
   description: "A VitePress Site",
+  vite: {
+      ssr: {
+      noExternal: ['@highlightjs/vue-plugin']
+    }
+  },
   themeConfig: {
     nav: [
       { text: "首页", link: "/" },

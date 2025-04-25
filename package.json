@@ -20,9 +20,8 @@
     "@lzwui/packages": "workspace:^",
     "@lzwui/theme-chalk": "workspace:^",
     "@lzwui/utils": "workspace:^",
-    "highlight.js": "^11.11.1",
-    "typescript": "^5.8.3",
-    "vue": "^3.5.13"
+    "highlight.js": "11.0.1",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
