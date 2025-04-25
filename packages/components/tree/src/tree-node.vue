@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, type PropType } from 'vue'
+import { ref, computed, type PropType } from 'vue'
 import type { TreeNodeProps } from './tree-node'
 defineOptions({
     name: "t-tree-node"

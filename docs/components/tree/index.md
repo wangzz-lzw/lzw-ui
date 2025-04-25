@@ -18,7 +18,13 @@ import demo from './index.vue'
 
 ## 事件
 
-| 事件名称        | 说明         | 回调参数 |
+| 事件名称        | 说明     | 回调参数 |
+| --------------- | -------- | -------- |
+| handleClickNode | 点击节点 | -        |
+
+## expose
+
+| 方法名称        | 说明         | 回调参数 |
 | --------------- | ------------ | -------- |
-| handleClickNode | 点击节点     | -        |
 | getCheckedNodes | 获取选中节点 | -        |
+| setCheckedNodes | 设置选中节点 | -        |

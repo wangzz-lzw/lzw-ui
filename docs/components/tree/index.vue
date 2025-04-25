@@ -1,8 +1,10 @@
 <template>
-    <t-tree :data="treeData" showCheckbox @handleClickNode="handleClickNode" @getCheckedNodes="getCheckedNodes" />
+    <t-button @click="getCheckedNodes" type="primary">获取选中的key</t-button>
+    <t-tree ref="treeRef" :data="treeData" showCheckbox @handleClickNode="handleClickNode" />
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 const treeData = [
     {
         id: "1",
@@ -77,12 +79,20 @@ const treeData = [
         ],
     },
 ];
+import type { Ref } from 'vue';
 
+interface TreeComponent {
+    getCheckedNodes: () => any[];
+}
+
+const treeRef: Ref<TreeComponent | null> = ref(null);
 const handleClickNode = (e: Event, node: any) => {
     // console.log(e, node);
+    console.log(node, 'node')
 };
 
-const getCheckedNodes = (data) => {
-    console.log(data, 'data')
+const getCheckedNodes = () => {
+    const keys = treeRef.value!.getCheckedNodes();
+    console.log(keys, 'keys')
 }
 </script>
