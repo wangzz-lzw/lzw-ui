@@ -23,6 +23,7 @@
       }
     }
   }
+
   .t-checkbox__original {
     opacity: 0;
     outline: none;
@@ -63,5 +64,35 @@
 .is-foucs {
   & .t-checkbox__label {
     color: $t-primary;
+  }
+}
+
+.some {
+  & .t-checkbox__input {
+    background-color: $t-primary;
+    border-color: $t-primary;
+    position: relative;
+    &::after {
+      transform: rotate(45deg) scaleY(1);
+      border-color: white;
+      left: 4px;
+      top: 7px;
+      width: 7px;
+      height: 1px;
+      background-color: white;
+      transform: rotate(0);
+    }
+  }
+}
+
+.all {
+  & .t-checkbox__input {
+    background-color: $t-primary;
+    border-color: $t-primary;
+    position: relative;
+    &::after {
+      transform: rotate(45deg) scaleY(1);
+      border-color: white;
+    }
   }
 }

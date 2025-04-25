@@ -1,5 +1,5 @@
 <template>
-    <t-tree :data="treeData" @handleClickNode="handleClickNode" @onSelectedChange="onSelectedChange" />
+    <t-tree :data="treeData" showCheckbox @handleClickNode="handleClickNode" @getCheckedNodes="getCheckedNodes" />
 </template>
 
 <script setup lang="ts">
@@ -82,7 +82,7 @@ const handleClickNode = (e: Event, node: any) => {
     // console.log(e, node);
 };
 
-const onSelectedChange = (data) => {
+const getCheckedNodes = (data) => {
     console.log(data, 'data')
 }
 </script>
