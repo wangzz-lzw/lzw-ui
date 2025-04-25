@@ -1,6 +1,8 @@
 <template>
     <t-button @click="getCheckedNodes" type="primary">获取选中的key</t-button>
-    <t-tree ref="treeRef" :data="treeData" showCheckbox @handleClickNode="handleClickNode" />
+    <div style="margin-top: 15px;">
+        <t-tree ref="treeRef" :data="treeData" showCheckbox @handleClickNode="handleClickNode" />
+    </div>
 </template>
 
 <script setup lang="ts">
