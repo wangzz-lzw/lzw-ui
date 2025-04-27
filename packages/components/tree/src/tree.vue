@@ -1,7 +1,7 @@
 <template>
     <div class="t-tree">
         <TreeNode showCheckbox v-for="node in treeData" :key="node.id" :node="node" v-bind="$attrs"
-            @handleClickNode="emits('handleClickNode', $event)" @changeCheckStatus="changeCheckStatus">
+            @handleClickNode="emits('handleClickNode', $event, node)" @changeCheckStatus="changeCheckStatus">
         </TreeNode>
     </div>
 </template>
@@ -28,37 +28,44 @@ const props = defineProps(
     }
 );
 const emits = defineEmits([
-    'handleClickNode', 'onSelectedChange'
+    'handleClickNode', 'onSelectedChange', 'check-change', 'changeCheckStatus'
 ]);
 const treeData = ref<TreeNodeProps[]>([]);
 
 watch(
     () => props.data,
-    (newValue) => (treeData.value = newValue),
-    { immediate: true }
+    (newValue) => {
+        treeData.value = JSON.parse(JSON.stringify(newValue)); // 深拷贝防止直接修改 props
+    },
+    { immediate: true, deep: true }
 );
 const changeAllCheckStatus = (node: TreeNodeProps) => {
     node.isChecked = !node.isChecked;
     if (node.children && node.children.length) {
-        changeChildCheckStatus(node.children, node.isChecked); // 更改子级所有节点状态
+        changeChildCheckStatus(node.children, node.isChecked);
     }
-    changeParentCheckStatus(treeData.value, node[props.nodeKey as keyof TreeNodeProps] as string); // 更改父级所有节点状态
+
+    changeParentCheckStatus(treeData.value, node[props.nodeKey as keyof TreeNodeProps] as string);
+
+    // 触发选中状态变化事件
+    emits('check-change', getCheckedNodes());
 };
 const changeCheckStatus = (node: TreeNodeProps) => {
     findNode(treeData.value, node[props.nodeKey as keyof TreeNodeProps] as string, changeAllCheckStatus);
 };
 
-const changeParentCheckStatus = (data: TreeNodeProps[], id: string, parent?: TreeNodeProps) => {
-    for (let item of data) {
-        if (item.id === id) {
+// 修改父级的选中状态
+const changeParentCheckStatus = (children: TreeNodeProps[], id: string, parent?: TreeNodeProps) => {
+    for (let item of children) {
+        if (item[props.nodeKey] === id) {
             // 是否当前节点的所有子节点都选中
-            const result = data.every((item) => item.isChecked === true);
+            const result = children.every((item: TreeNodeProps) => item.isChecked === true);
             if (parent && parent.isChecked === result) {
                 // 如果父级跟需要改变的结果一致，则不需要再往上找了
                 break;
             } else if (parent && parent.isChecked !== result) {
                 parent.isChecked = result;
-                parent && changeParentCheckStatus(treeData.value, parent.id);
+                parent && changeParentCheckStatus(treeData.value, parent[props.nodeKey]);
             }
         } else if (item.children && item.children.length) {
             changeParentCheckStatus(item.children, id, item);
@@ -70,7 +77,7 @@ const changeParentCheckStatus = (data: TreeNodeProps[], id: string, parent?: Tre
 const findNode = (data: TreeNodeProps[], id: string, handleFun: (node: TreeNodeProps) => void): TreeNodeProps | null => {
     let obj = null;
     for (let item of data) {
-        if (item.id === id) {
+        if (item[props.nodeKey] === id) {
             obj = item;
             handleFun(item);
             break;
@@ -107,7 +114,18 @@ const getChecked = (data: TreeNodeProps[], checkedNodes: TreeNodeProps[]) => {
         }
     }
 };
+
+const resetChecked = (data: TreeNodeProps[]) => {
+    for (let item of data) {
+        item.isChecked = false;
+        if (item.children && item.children.length) {
+            resetChecked(item.children);
+        }
+    }
+};
 const setCheckedNodes = (keys: string[]) => {
+    // 先重置所有节点状态
+    resetChecked(treeData.value);
     setChecked(treeData.value, keys);
     keys.forEach((key) => {
         changeParentCheckStatus(treeData.value, key); // 更改父级所有节点状态

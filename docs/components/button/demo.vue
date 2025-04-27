@@ -7,9 +7,9 @@
     <t-button type="danger">danger</t-button>
   </div>
   <div style="margin-top: 20px;">
-    <t-button type="primary" icon="qiyehetongguanli">primary2</t-button>
+    <t-button type="primary" icon="feel-at-ease-filled">primary2</t-button>
   </div>
   <div style="margin-top: 20px;">
-    <t-button type="primary" circle icon="dingshi"></t-button>
+    <t-button type="primary" circle icon="happy-filled"></t-button>
   </div>
 </template>

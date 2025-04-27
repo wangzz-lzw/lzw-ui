@@ -12,7 +12,7 @@
         <!-- children -->
         <div class="t-tree-node__children" v-show="showChild">
             <t-tree-node v-for="child in node.children" :key="child.id" :node="child" :showCheckbox="showCheckbox"
-                @handleClickNode="emits('handleClickNode', $event)"
+                @handleClickNode="emits('handleClickNode', $event, node)"
                 @changeCheckStatus="emits('changeCheckStatus', $event)" />
         </div>
     </div>

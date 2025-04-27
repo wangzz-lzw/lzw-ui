@@ -25,10 +25,11 @@ export default defineConfig({
             { text: "Input 输入框", link: "/components/input/" },
             { text: "Tree", link: "/components/tree/" },
             { text: "Checkbox", link: "/components/checkbox/" },
+            { text: "Model", link: "/components/model/" },
           ],
         },
       ],
     },
-    socialLinks: [{ icon: "github", link: "https://github.com/vuejs/vitepress" }],
+    socialLinks: [{ icon: "github", link: "http://github.com/wangzz-lzw/lzw-ui" }],
   },
 })

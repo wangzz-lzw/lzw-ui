@@ -4,4 +4,5 @@ export interface TreeNodeProps {
     children?: TreeNodeProps[];
     showChild: boolean;
     isChecked?: boolean;
+    [key: string]: any;
 }

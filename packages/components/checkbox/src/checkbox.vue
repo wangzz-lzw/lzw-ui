@@ -41,7 +41,6 @@ const emits = defineEmits(['update:modelValue', "change"]);
 
 
 const handleClick = () => {
-    console.log('click')
     emits('update:modelValue', !props.modelValue);
     emits('change', !props.modelValue);
 }
