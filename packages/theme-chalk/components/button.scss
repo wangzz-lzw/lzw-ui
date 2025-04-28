@@ -36,6 +36,8 @@
   @include e(inner) {
     display: inline-flex;
     align-items: center;
+    width: 100%;
+    justify-content: center;
   }
   @include e(primary) {
     color: #fff;
