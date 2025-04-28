@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=require("./src/form-item.vue.js");e.default.install=l=>{l.component(e.default.name,e.default)};const t=e.default;exports.TFormItem=t;exports.default=t;
