@@ -17,7 +17,7 @@ export const useNamespace = (block: string) => {
   const be = (blockSuffix?: string, element?: string) =>
     blockSuffix && element
       ? _bem(unref(namespace), block, blockSuffix, element, '')
-      : ''
+          : ''
   return {
     namespace,
     b,

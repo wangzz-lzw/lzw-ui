@@ -1,24 +1,21 @@
 <template>
-  <li class="t-select-option" :class="{
-    'is-selected': isSelected,
-    'is-disabled': disabled
-  }" @click="handleClick">
-    <span class="t-select-option__label">{{ label }}</span>
+  <li class="t-option" :class="[
+    bem.b(),
+    { 'is-selected': isSelected },
+    { 'is-disabled': disabled }
+  ]" @click="handleClick">
+    <span :class="bem.e('label')">{{ label }}</span>
   </li>
 </template>
 
 <script setup lang="ts">
+import { inject, computed, type Ref } from 'vue'
+import { bem, OptionProps } from './option'
 
 defineOptions({
   name: 't-option'
 })
-import { inject, computed, type Ref } from 'vue'
 
-interface OptionProps {
-  value: string | number
-  label?: string
-  disabled?: boolean
-}
 
 const props = withDefaults(defineProps<OptionProps>(), {
   label: '',

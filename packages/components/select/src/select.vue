@@ -1,7 +1,7 @@
 <template>
     <div :class="[
-        `${bem.b()}`,
-        size && `t-select--${size}`,
+        bem.b(),
+        size && bem.m(size),
         { 'is-disabled': disabled },
         { 'is-focus': isOpen }
     ]">

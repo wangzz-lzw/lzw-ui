@@ -1,12 +1,13 @@
 <template>
-  <button class="t-button" :class="[
-    `${bem.e(type)}`,
-    `${size && 't-button--' + size}`,
+  <button :class="[
+    bem.b(),
+    bem.e(type),
+    size && bem.m(size),
     { 'is-round': round },
     { 'is-circle': circle }
   ]" :disabled="disabled">
     <span :class="[`${!!icon ? 't-icon icon-' + icon : ''}`]"></span>
-    <div v-if="$slots.default" class="t-button__inner">
+    <div v-if="$slots.default" :class="bem.e('inner')">
       <slot />
     </div>
   </button>
@@ -14,48 +15,14 @@
 
 <script setup lang="ts">
 import { defineOptions, defineProps } from "vue";
-import { ButtonProps, bem } from "./button";
+import { buttonProps, bem } from "./button";
 
 defineOptions({
   name: "t-button",
 });
+defineProps(buttonProps);
 
-import { PropType } from "vue";
 
-export interface ButtonProps {
-  type?: "primary" | "success" | "warning" | "info" | "danger";
-  size?: "" | "small" | "mini";
-  round?: boolean;
-  disabled?: boolean;
-  circle?: boolean;
-}
-
-defineProps({
-  type: {
-    type: String as PropType<ButtonProps["type"]>,
-    default: "primary",
-  },
-  size: {
-    type: String as PropType<ButtonProps["size"]>,
-    default: "",
-  },
-  round: {
-    type: Boolean,
-    default: false,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  icon: {
-    type: String,
-    default: "",
-  },
-  circle: {
-    type: Boolean,
-    default: false,
-  }
-});
 </script>
 
 <style lang="scss" scoped></style>

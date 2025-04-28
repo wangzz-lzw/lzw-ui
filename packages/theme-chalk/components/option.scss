@@ -1,7 +1,7 @@
 @use "../common/base.scss" as *;
 @use "../common/theme.scss" as *;
-
-.t-select-option {
+@use "../common/mixins.scss" as *;
+@include b(option) {
   padding: 8px 16px;
   cursor: pointer;
   list-style: none;

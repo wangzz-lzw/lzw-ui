@@ -1,26 +1,27 @@
-import {useNamespace} from '@lzwui/utils'
+import { PropType } from "vue";
 
-const BUTTON_TYPE = ["default", "primary", "success", "warning", "info", "danger"];
-const BUTTON_SIZE = ["", "small", "mini"];
+import { useNamespace } from '@lzwui/utils'
+
 
 export const bem = useNamespace('button')
+export interface ButtonProps {
+  type?: "primary" | "success" | "warning" | "info" | "danger";
+  size?: "" | "small" | "mini";
+  round?: boolean;
+  disabled?: boolean;
+  circle?: boolean;
+}
 
-export const ButtonProps = {
+export const buttonProps= {
   // 类型
   type: {
-    type: String,
+    type: String as PropType<ButtonProps['type']>,
     default: "default",
-    validator(value : keyof typeof BUTTON_TYPE) {
-      return BUTTON_TYPE.includes(value as string);
-    },
   },
   // 尺寸
   size: {
-    type: String,
+    type: String as PropType<ButtonProps['size']>,
     default: "",
-    validator(value:keyof typeof BUTTON_SIZE) {
-      return BUTTON_SIZE.includes(value as string);
-    },
   },
   // 圆角
   round: {
@@ -32,4 +33,13 @@ export const ButtonProps = {
     type: Boolean,
     default: false,
   },
+  circle: {
+    type: Boolean,
+    default: false,
+  },
+  icon: {
+    type: String,
+    default: "",
+  }
 };
+
