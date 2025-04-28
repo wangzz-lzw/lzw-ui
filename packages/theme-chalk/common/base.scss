@@ -14,6 +14,11 @@ $t-placeholder-color: #bfc3d6;
 $t-hover-color: #f2f2f2;
 $t-icon-fill-color: #ccc;
 $t-shadow: rgba(0, 0, 0, 0.12);
+$t-disabled-bg-color: #f7f7f8;
+$t-disabled-text-color: #b7b9c3;
+$t-text-color-secondary: #8898aa;
+$t-disabled-border-color: #dcdfe6;
+$t-bg-color-hover: #f2f2f2;
 
 $t-primary-lighten: color.adjust($t-primary, $lightness: 23%);
 $t-success-lighten: color.adjust($t-success, $lightness: 45%);

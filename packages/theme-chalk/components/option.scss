@@ -1,0 +1,26 @@
+@use "../common/base.scss" as *;
+@use "../common/theme.scss" as *;
+
+.t-select-option {
+  padding: 8px 16px;
+  cursor: pointer;
+  list-style: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $t-text-color;
+  &:hover {
+    background-color: $t-bg-color-hover;
+  }
+  &.is-selected {
+    color: $t-primary;
+    background-color: rgba($t-primary, 0.1);
+  }
+  &.is-disabled {
+    color: $t-disabled-text-color;
+    cursor: not-allowed;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}

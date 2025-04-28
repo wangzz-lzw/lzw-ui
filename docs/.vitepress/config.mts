@@ -26,6 +26,7 @@ export default defineConfig({
             { text: "Tree", link: "/components/tree/" },
             { text: "Checkbox", link: "/components/checkbox/" },
             { text: "Model", link: "/components/model/" },
+            { text:"Select", link:"/components/select/"},
           ],
         },
       ],

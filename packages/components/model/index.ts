@@ -11,3 +11,5 @@ Model.install = (app:App) => {
 export const TModel = Model;
 
 export default TModel;
+
+export { useModel } from './src/useModel'

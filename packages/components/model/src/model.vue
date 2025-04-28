@@ -29,20 +29,12 @@
 
 <script setup lang="ts">
 import { defineExpose } from 'vue'
-
+import { propsDefinition } from './model';
 defineOptions({
     name: "t-model"
 });
-const props = defineProps({
-    modelValue: {
-        type: Boolean,
-        defualt: false
-    },
-    title: {
-        type: String,
-        default: "标题"
-    }
-});
+
+defineProps(propsDefinition)
 
 const emits = defineEmits(["update:modelValue"]);
 
@@ -57,7 +49,7 @@ const handleOpen = () => {
 
 defineExpose({
     handleClose,
-    handleOpen
+    handleOpen,
 });
 </script>
 
