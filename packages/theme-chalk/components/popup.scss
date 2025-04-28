@@ -1,0 +1,58 @@
+@use "../common/base" as *;
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+#tooltip {
+  z-index: 2000;
+}
+#tooltip {
+  background: $t-bg-color;
+  color: $t-text-color;
+  font-weight: bold;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: $t-border-radius;
+  box-shadow: $t-shadow;
+}
+
+#arrow,
+#arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  z-index: -1;
+}
+
+#arrow::before {
+  content: "";
+  transform: rotate(45deg);
+  border: 1px solid $t-border-color;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 2px;
+}
+
+#tooltip[data-popper-placement^="top"] > #arrow {
+  bottom: -4px;
+}
+
+#tooltip[data-popper-placement^="bottom"] > #arrow {
+  top: -4px;
+}
+
+#tooltip[data-popper-placement^="left"] > #arrow {
+  right: -4px;
+}
+
+#tooltip[data-popper-placement^="right"] > #arrow {
+  left: -4px;
+}

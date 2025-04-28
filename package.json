@@ -20,6 +20,7 @@
     "@lzwui/packages": "workspace:^",
     "@lzwui/theme-chalk": "workspace:^",
     "@lzwui/utils": "workspace:^",
+    "@popperjs/core": "^2.11.8",
     "highlight.js": "11.0.1",
     "typescript": "^5.8.3"
   },
