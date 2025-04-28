@@ -2,7 +2,7 @@
     <div class="demo-popup">
         <div class="trigger-container">
             <t-popup v-model="showPopup" placement="bottom" trigger="click">
-                <t-button>Click Toggle Popup</t-button>
+                <t-button type="primary">Click Toggle Popup</t-button>
                 <template #popper>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         <span>Close</span>
@@ -16,7 +16,7 @@
             </t-popup>
 
             <t-popup v-model="hoverPopupVisible" placement="bottom" trigger="hover">
-                <t-button>Hover Toggle Popup</t-button>
+                <t-button type="danger">Hover Toggle Popup</t-button>
                 <template #popper>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         <span>Close</span>
