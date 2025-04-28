@@ -1,18 +1,19 @@
 <template>
-    <div class="t-select" :class="[
+    <div :class="[
+        `${bem.b()}`,
         size && `t-select--${size}`,
         { 'is-disabled': disabled },
         { 'is-focus': isOpen }
     ]">
         <div class="t-select__wrapper" @click.stop="toggleDropdown">
-            <input ref="inputRef" class="t-select__input" type="text" :value="displayValue" :placeholder="placeholder"
+            <input ref="inputRef" :class="bem.e('input')" type="text" :value="displayValue" :placeholder="placeholder"
                 :disabled="disabled" readonly @keydown.down.prevent="handleKeyDown($event, 'down')"
                 @keydown.up.prevent="handleKeyDown($event, 'up')"
                 @keydown.enter.prevent="handleKeyDown($event, 'enter')" />
-            <span class="t-select__arrow"></span>
-            <span v-if="clearable && modelValue" class="t-select__clear" @click.stop="clearValue">×</span>
+            <span :class="bem.e('arrow')"></span>
+            <span v-if="clearable && modelValue" :class="bem.e('clear')" @click.stop="clearValue">×</span>
         </div>
-        <div v-show="isOpen" class="t-select__dropdown" ref="dropdownRef">
+        <div v-show="isOpen" :class="bem.e('dropdown')" ref="dropdownRef">
             <ul>
                 <slot></slot>
             </ul>
@@ -22,19 +23,12 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount, provide } from 'vue'
+import { bem, SelectProps } from './select'
 
 defineOptions({
     name: 't-select'
 })
 
-interface SelectProps {
-    modelValue?: string | number | Array<string | number>
-    placeholder?: string
-    disabled?: boolean
-    clearable?: boolean
-    size?: '' | 'small' | 'mini'
-    multiple?: boolean
-}
 
 const props = withDefaults(defineProps<SelectProps>(), {
     placeholder: '请选择',
