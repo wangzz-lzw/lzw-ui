@@ -1,23 +1,13 @@
 <template>
-    <div class="lzw-input">
-        <input class="lzw-input__inner" @input="handleInput" />
+    <div :class="[bem.b(), size && bem.m(size), { 'is-disabled': disabled },{'is-readonly': readonly }]">
+        <input :class="[bem.e('input')]" :value="modelValue" @input="handleInput" />
     </div>
 </template>
 
 <script setup lang="ts">
+import {inputProps , bem} from './input'
 
-defineProps(
-    {
-        modelValue: {
-            type: String,
-            default: ''
-        },
-        placeholder: {
-            type: String,
-            default: '',
-        }
-    }
-)
+defineProps(inputProps)
 
 const emits = defineEmits(['update:modelValue'])
 const handleInput = (e: Event) => {

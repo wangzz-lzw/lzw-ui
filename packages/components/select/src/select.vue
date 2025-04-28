@@ -1,29 +1,30 @@
 <template>
-    <div :class="[
-        bem.b(),
-        size && bem.m(size),
-        { 'is-disabled': disabled },
-        { 'is-focus': isOpen }
-    ]">
-        <div class="t-select__wrapper" @click.stop="toggleDropdown">
-            <input ref="inputRef" :class="bem.e('input')" type="text" :value="displayValue" :placeholder="placeholder"
-                :disabled="disabled" readonly @keydown.down.prevent="handleKeyDown($event, 'down')"
-                @keydown.up.prevent="handleKeyDown($event, 'up')"
-                @keydown.enter.prevent="handleKeyDown($event, 'enter')" />
-            <span :class="bem.e('arrow')"></span>
-            <span v-if="clearable && modelValue" :class="bem.e('clear')" @click.stop="clearValue">×</span>
+    <TPopup>
+        <div :class="[
+            bem.b(),
+            size && bem.m(size),
+            { 'is-disabled': disabled },
+            { 'is-focus': isOpen }
+        ]">
+            <div class="t-select__wrapper" @click.stop="toggleDropdown">
+                <TInput v-model="displayValue" :size="size" :placeholder="placeholder" :disabled="disabled" readonly />
+                <span :class="bem.e('arrow')"></span>
+                <span v-if="clearable && modelValue" :class="bem.e('clear')" @click.stop="clearValue">×</span>
+            </div>
+
+            <div v-show="isOpen" :class="bem.e('dropdown')" ref="dropdownRef">
+                <ul>
+                    <slot></slot>
+                </ul>
+            </div>
         </div>
-        <div v-show="isOpen" :class="bem.e('dropdown')" ref="dropdownRef">
-            <ul>
-                <slot></slot>
-            </ul>
-        </div>
-    </div>
+    </TPopup>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount, provide } from 'vue'
 import { bem, SelectProps } from './select'
+import { TPopup, TInput } from '../../components';
 
 defineOptions({
     name: 't-select'
