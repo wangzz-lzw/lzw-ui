@@ -1,5 +1,6 @@
 @use "../common/base.scss" as *;
-.t-button {
+@use "../common/mixins.scss" as *;
+@include b(button) {
   display: inline-flex;
   white-space: nowrap;
   cursor: pointer;
@@ -22,30 +23,81 @@
   &:hover:not(:disabled) {
     box-shadow: 0 7px 14px rgb(50 50 93 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
   }
+  @include e(default) {
+    color: $t-primary;
+    background-color: transparent;
+    &:active:not(:disabled) {
+      background: #e6e6e6;
+      border-color: #e6e6e6;
+      color: $t-default;
+      box-shadow: 0 0 0 transparent;
+    }
+  }
+  @include e(inner) {
+    display: inline-flex;
+    align-items: center;
+  }
+  @include e(primary) {
+    color: #fff;
+    background-color: $t-primary;
+    border-color: $t-primary;
+    &:active:not(:disabled) {
+      background: #324cdd;
+    }
+  }
+  @include e(success) {
+    color: #fff;
+    background-color: $t-success;
+    border-color: $t-success;
+    &:active:not(:disabled) {
+      background: #24a46d;
+    }
+  }
+  @include e(warning) {
+    color: #fff;
+    background-color: $t-warning;
+    border-color: $t-warning;
+    &:active:not(:disabled) {
+      background: #fa3a0e;
+    }
+  }
+
+  @include e(info) {
+    color: #fff;
+    background-color: $t-info;
+    border-color: $t-info;
+    &:active:not(:disabled) {
+      background: #0da5c0;
+    }
+  }
+
+  @include e(danger) {
+    color: #fff;
+    background-color: $t-danger;
+    border-color: $t-danger;
+    &:active:not(:disabled) {
+      background: #ec0c38;
+    }
+  }
+  @include m(icon) {
+    min-width: 40px;
+    padding: 8px 15px;
+    font-size: 18px;
+    border-radius: 4px;
+  }
+  @include m("small") {
+    min-width: 92px;
+    padding: 10px 18px;
+  }
+  @include m(mini) {
+    min-width: 80px;
+    padding: 9px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
 }
 
-.t-button > .button__inner {
-  display: flex;
-  align-items: center;
-}
-
-.t-button.t-button--small {
-  min-width: 92px;
-  padding: 10px 18px;
-}
-.t-button.t-button--mini {
-  min-width: 80px;
-  padding: 9px 15px;
-  font-size: 12px;
-  border-radius: 3px;
-}
-.t-button.t-button--icon {
-  min-width: 40px;
-  padding: 8px 15px;
-  font-size: 18px;
-  border-radius: 4px;
-}
-.t-button.is-round {
+.t-button.t-button-- .t-button.is-round {
   box-sizing: border-box;
   border-radius: 20px;
 }
@@ -54,59 +106,7 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
-.t-button__default {
-  color: $t-primary;
-  background-color: transparent;
-  &:active:not(:disabled) {
-    background: #e6e6e6;
-    border-color: #e6e6e6;
-    color: $t-default;
-    box-shadow: 0 0 0 transparent;
-  }
-}
 
-.t-button__primary {
-  color: #fff;
-  background-color: $t-primary;
-  border-color: $t-primary;
-  &:active:not(:disabled) {
-    background: #324cdd;
-  }
-}
-.t-button__success {
-  color: #fff;
-  background-color: $t-success;
-  border-color: $t-success;
-  &:active:not(:disabled) {
-    background: #24a46d;
-  }
-}
-.t-button__warning {
-  color: #fff;
-  background-color: $t-warning;
-  border-color: $t-warning;
-  &:active:not(:disabled) {
-    background: #fa3a0e;
-  }
-}
-
-.t-button__info {
-  color: #fff;
-  background-color: $t-info;
-  border-color: $t-info;
-  &:active:not(:disabled) {
-    background: #0da5c0;
-  }
-}
-
-.t-button__danger {
-  color: #fff;
-  background-color: $t-danger;
-  border-color: $t-danger;
-  &:active:not(:disabled) {
-    background: #ec0c38;
-  }
-}
 .t-button + .t-button {
   margin-left: 10px;
 }

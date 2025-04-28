@@ -1,5 +1,9 @@
+import {useNamespace} from '@lzwui/utils'
+
 const BUTTON_TYPE = ["default", "primary", "success", "warning", "info", "danger"];
 const BUTTON_SIZE = ["", "small", "mini"];
+
+export const bem = useNamespace('button')
 
 export const ButtonProps = {
   // 类型

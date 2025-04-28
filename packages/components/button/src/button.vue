@@ -1,6 +1,6 @@
 <template>
   <button class="t-button" :class="[
-    `t-button__${type}`,
+    `${bem.e(type)}`,
     `${size && 't-button--' + size}`,
     { 'is-round': round },
     { 'is-circle': circle }
@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { defineOptions, defineProps } from "vue";
-import { ButtonProps } from "./button";
+import { ButtonProps, bem } from "./button";
 
 defineOptions({
   name: "t-button",

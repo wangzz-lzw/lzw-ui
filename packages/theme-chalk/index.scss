@@ -1,5 +1,6 @@
 @use "./common/base.scss" as *;
 @use "./common/theme.scss" as *;
+@use "./common/mixins.scss";
 @use "./components/tree.scss";
 @use "./components/icon.scss";
 @use "./components/button.scss";

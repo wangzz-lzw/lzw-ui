@@ -1,0 +1,31 @@
+$namespace: "t" !default;
+$block-sel: "-" !default;
+$element-sel: "__" !default;
+$modifier-sel: "--" !default;
+
+@mixin b($block) {
+  $blockName: $namespace + $block-sel + $block;
+  .#{$blockName} {
+    //插值语法  #{}
+    @content; //内容替换
+  }
+}
+
+@mixin e($element) {
+  $selector: &;
+  @at-root {
+    //样式文件根层级上，而不是嵌套在其父选择器
+    #{$selector + $element-sel + $element} {
+      @content;
+    }
+  }
+}
+
+@mixin m($modifier) {
+  $selector: &;
+  @at-root {
+    #{$selector + $modifier-sel + $modifier} {
+      @content;
+    }
+  }
+}
