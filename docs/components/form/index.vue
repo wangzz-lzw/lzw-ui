@@ -30,9 +30,7 @@ const options = [
     { value: 'option10', label: '选项10' },
 ]
 const rules = {
-    name: [
-        { required: true, message: '请输入姓名', trigger: 'blur' },
-    ],
+    name: { required: true, message: '请输入姓名', trigger: 'blur' },
     province: [{ required: true, message: '请选择省份' }]
 }
 

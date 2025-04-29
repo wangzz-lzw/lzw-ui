@@ -13,6 +13,7 @@ export function useFormValidation<T extends Values>(form: T, rules: Rules) {
             [name]: rules[name as string]
         }
         const singleValidator = new Schema(singleSchema)
+        // 构造 options 传递 trigger
         return new Promise(resolve => {
             singleValidator.validate(singleForm, error => {
                 errors.value[name as string] = error!
