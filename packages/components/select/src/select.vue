@@ -7,7 +7,7 @@
     ]">
         <TPopup v-model="isOpen" :disabled="disabled">
             <div class="t-select__wrapper" ref="inputRef">
-                <TInput v-model="displayValue" :size="size" :placeholder="placeholder" :disabled="disabled" />
+                <TInput v-model="displayValue" :size="size" :placeholder="placeholder" readonly :disabled="disabled" />
                 <span :class="bem.e('arrow')" :style="{ transform: isOpen ? 'rotate(180deg)' : '' }"></span>
                 <span v-if="clearable && modelValue" :class="bem.e('clear')" @click.stop="clearValue">×</span>
             </div>
@@ -26,6 +26,7 @@
 import { ref, computed, provide } from 'vue'
 import { bem, SelectProps } from './select'
 import { TPopup, TInput, TScrollbar } from '../../components';
+import { OptionProps } from './option';
 
 defineOptions({
     name: 't-select'
@@ -46,38 +47,27 @@ const isOpen = ref(false)
 const inputRef = ref<HTMLInputElement>()
 
 const dropdownRef = ref<HTMLDivElement>()
-const displayValue = computed(() => {
-    if (Array.isArray(props.modelValue)) {
-        return props.modelValue.join(', ')
-    }
-    return props.modelValue?.toString() || ''
-})
-
+const displayValue = ref('')
+const newValue = ref()
 provide('selectValue', computed(() => props.modelValue))
 provide('updateSelectValue', updateValue)
 
-function updateValue(value: string | number) {
-    let newValue
+function updateValue(newProps: OptionProps) {
     if (props.multiple) {
-        const currentValue = Array.isArray(props.modelValue) ? props.modelValue : []
-        const valueIndex = currentValue.indexOf(value)
-        if (valueIndex > -1) {
-            newValue = [...currentValue]
-            newValue.splice(valueIndex, 1)
-        } else {
-            newValue = [...currentValue, value]
-        }
+        newValue.value = [...(newValue.value || []), newProps.value]
+        displayValue.value = [...(displayValue.value || []), newProps.label!].join('')
     } else {
-        newValue = value
+        newValue.value = newProps.value
+        displayValue.value = newProps.label!
         isOpen.value = false
     }
-
-    emits('update:modelValue', newValue)
-    emits('change', newValue)
+    emits('update:modelValue', newValue.value)
+    emits('change', newValue.value)
 }
 
 function clearValue() {
     const newValue = props.multiple ? [] : ''
+    displayValue.value = newValue.toString()
     emits('update:modelValue', newValue)
     emits('change', newValue)
     isOpen.value = false

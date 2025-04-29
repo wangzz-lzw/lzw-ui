@@ -62,7 +62,6 @@ const handleClick = () => {
   margin: 20px 0;
   border: 1px solid #efefef;
   border-radius: 6px;
-  overflow: hidden;
 }
 
 .preview_box {

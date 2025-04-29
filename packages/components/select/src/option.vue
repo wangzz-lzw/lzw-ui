@@ -4,7 +4,10 @@
     { 'is-selected': isSelected },
     { 'is-disabled': disabled }
   ]" @click="handleClick">
-    <span :class="bem.e('label')">{{ label }}</span>
+    <span :class="bem.e('label')">
+      <slot v-if="$slots.default"></slot>
+      <template v-else>{{ label }}</template>
+    </span>
   </li>
 </template>
 
@@ -23,7 +26,7 @@ const props = withDefaults(defineProps<OptionProps>(), {
 })
 
 const selectValue = inject<Ref<string | number | Array<string | number>>>('selectValue')
-const updateSelectValue = inject<(value: string | number) => void>('updateSelectValue')
+const updateSelectValue = inject<(props: OptionProps) => void>('updateSelectValue')
 
 const isSelected = computed(() => {
   if (Array.isArray(selectValue?.value)) {
@@ -34,7 +37,7 @@ const isSelected = computed(() => {
 
 function handleClick() {
   if (props.disabled) return
-  updateSelectValue?.(props.value)
+  updateSelectValue?.(props)
 }
 </script>
 
