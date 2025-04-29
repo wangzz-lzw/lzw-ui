@@ -1,19 +1,18 @@
 <template>
   <div class="reference-wrapper" style="display: inline-block">
-    <div class="reference" aria-describedby="tooltip" ref="referenceRef" 
-         @click.stop.prevent="togglePopperShow"
-         @mouseenter="handleMouseEnter" 
-         @mouseleave="handleMouseLeave">
+    <div class="reference" aria-describedby="tooltip" ref="referenceRef" @click.stop.prevent="togglePopperShow"
+      @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
       <slot></slot>
     </div>
   </div>
   <transition name="fade">
-    <div ref="popperRef" role="tooltip" id="tooltip" v-show="modelValue" 
-         :style="{ zIndex: 2000, position: 'absolute' }">
+    <div ref="popperRef" role="tooltip" id="tooltip" v-show="modelValue"
+      :style="{ zIndex: 2000, position: 'absolute' }">
       <div id="arrow" data-popper-arrow></div>
       <slot name="popper"></slot>
     </div>
   </transition>
+
 </template>
 
 <style scoped>
@@ -25,7 +24,7 @@
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s ease;
+  transition: opacity 0.5s ease;
 }
 
 .fade-enter-from,
@@ -35,28 +34,14 @@
 </style>
 
 <script lang="ts" setup>
-import { ref, watch, nextTick, onUnmounted, onMounted } from 'vue'
+import { ref, watch, nextTick, onUnmounted, onMounted, onBeforeUnmount } from 'vue'
 import { usePopper } from '@lzwui/utils/usePopper'
-
+import { propsDefinition } from './popup'
 defineOptions({
   name: 't-popup'
 })
 
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false
-  },
-  placement: {
-    type: String as () => 'top' | 'bottom' | 'left' | 'right',
-    default: 'bottom'
-  },
-  trigger: {
-    type: String as () => 'click' | 'hover' | 'manual',
-    default: 'click'
-  }
-})
-
+const props = defineProps(propsDefinition)
 const emits = defineEmits(['update:modelValue', 'hide', 'show'])
 
 const referenceRef = ref<HTMLElement | null>(null)
@@ -78,6 +63,7 @@ onMounted(async () => {
     await nextTick()
     updatePopper()
   }
+  document.addEventListener('click', handleClickOutside)
 })
 
 const {
@@ -112,6 +98,7 @@ onUnmounted(() => {
 })
 
 const togglePopperShow = () => {
+  if (props.disabled) return
   if (props.trigger === 'manual') return
   emits('update:modelValue', !props.modelValue)
 }
@@ -127,4 +114,19 @@ const handleMouseLeave = () => {
     emits('update:modelValue', false)
   }
 }
+
+
+
+function handleClickOutside(e: MouseEvent) {
+  if (!props.modelValue) return
+  if (!popperRef.value?.contains(e.target as Node) &&
+    !popperRef.value?.contains(e.target as Node)) {
+    emits('update:modelValue', false)
+  }
+}
+
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 </script>

@@ -2,7 +2,7 @@
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s ease;
+  transition: opacity 1s ease;
 }
 
 .fade-enter-from,
@@ -11,9 +11,6 @@
 }
 
 #tooltip {
-  z-index: 2000;
-}
-#tooltip {
   background: $t-bg-color;
   color: $t-text-color;
   font-weight: bold;
@@ -21,6 +18,8 @@
   font-size: 14px;
   border-radius: $t-border-radius;
   box-shadow: $t-shadow;
+  z-index: 2000;
+  box-sizing: border-box;
 }
 
 #arrow,

@@ -1,11 +1,11 @@
 <template>
-    <div :class="[bem.b(), size && bem.m(size), { 'is-disabled': disabled },{'is-readonly': readonly }]">
-        <input :class="[bem.e('input')]" :value="modelValue" @input="handleInput" />
+    <div :class="[bem.b(), size && bem.m(size), { 'is-disabled': disabled }, { 'is-readonly': readonly }]">
+        <input :class="[bem.e('input')]" :value="modelValue" @input="handleInput" :readonly="disabled" />
     </div>
 </template>
 
 <script setup lang="ts">
-import {inputProps , bem} from './input'
+import { inputProps, bem } from './input'
 
 defineProps(inputProps)
 

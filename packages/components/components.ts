@@ -7,3 +7,5 @@ export { TCheckbox } from './checkbox'
 export { TModel } from './model'
 export { TSelect, TOption } from './select'
 export { TPopup } from './popup'
+
+export {TScrollbar} from './scrollbar'

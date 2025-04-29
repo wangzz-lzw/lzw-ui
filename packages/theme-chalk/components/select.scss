@@ -55,10 +55,11 @@
 
   @include e(clear) {
     position: absolute;
-    right: 30px;
+    right: 19px;
     width: 14px;
     height: 14px;
     cursor: pointer;
+    line-height: 0.8;
     color: $t-text-color-secondary;
     &:hover {
       color: $t-text-color;
@@ -66,17 +67,12 @@
   }
 
   @include e(dropdown) {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    margin-top: 4px;
-    padding: 6px 0;
     background-color: #fff;
-    border: 1px solid $t-border-color;
     border-radius: 4px;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    box-sizing: border-box;
+    max-height: 274px;
+    overflow-y: auto;
   }
 }
 

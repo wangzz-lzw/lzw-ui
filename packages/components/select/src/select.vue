@@ -1,30 +1,31 @@
 <template>
-    <TPopup>
-        <div :class="[
-            bem.b(),
-            size && bem.m(size),
-            { 'is-disabled': disabled },
-            { 'is-focus': isOpen }
-        ]">
-            <div class="t-select__wrapper" @click.stop="toggleDropdown">
-                <TInput v-model="displayValue" :size="size" :placeholder="placeholder" :disabled="disabled" readonly />
-                <span :class="bem.e('arrow')"></span>
+    <div :class="[
+        bem.b(),
+        size && bem.m(size),
+        { 'is-disabled': disabled },
+        { 'is-focus': isOpen }
+    ]">
+        <TPopup v-model="isOpen" :disabled="disabled">
+            <div class="t-select__wrapper" ref="inputRef">
+                <TInput v-model="displayValue" :size="size" :placeholder="placeholder" :disabled="disabled" />
+                <span :class="bem.e('arrow')" :style="{ transform: isOpen ? 'rotate(180deg)' : '' }"></span>
                 <span v-if="clearable && modelValue" :class="bem.e('clear')" @click.stop="clearValue">×</span>
             </div>
-
-            <div v-show="isOpen" :class="bem.e('dropdown')" ref="dropdownRef">
-                <ul>
-                    <slot></slot>
-                </ul>
-            </div>
-        </div>
-    </TPopup>
+            <template #popper>
+                <div :class="bem.e('dropdown')" :style="computedStyle" ref="dropdownRef">
+                    <TScrollbar>
+                        <slot></slot>
+                    </TScrollbar>
+                </div>
+            </template>
+        </TPopup>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount, provide } from 'vue'
+import { ref, computed, provide } from 'vue'
 import { bem, SelectProps } from './select'
-import { TPopup, TInput } from '../../components';
+import { TPopup, TInput, TScrollbar } from '../../components';
 
 defineOptions({
     name: 't-select'
@@ -43,10 +44,8 @@ const emits = defineEmits(['update:modelValue', 'change'])
 
 const isOpen = ref(false)
 const inputRef = ref<HTMLInputElement>()
-const dropdownRef = ref<HTMLDivElement>()
-const options = ref<Array<{ value: string | number, label?: string }>>([])
-const highlightedIndex = ref(-1)
 
+const dropdownRef = ref<HTMLDivElement>()
 const displayValue = computed(() => {
     if (Array.isArray(props.modelValue)) {
         return props.modelValue.join(', ')
@@ -77,14 +76,6 @@ function updateValue(value: string | number) {
     emits('change', newValue)
 }
 
-function toggleDropdown() {
-    if (props.disabled) return
-    isOpen.value = !isOpen.value
-    if (isOpen.value) {
-        highlightedIndex.value = -1
-    }
-}
-
 function clearValue() {
     const newValue = props.multiple ? [] : ''
     emits('update:modelValue', newValue)
@@ -92,52 +83,19 @@ function clearValue() {
     isOpen.value = false
 }
 
-function handleKeyDown(e: KeyboardEvent, type: 'up' | 'down' | 'enter') {
-    if (!isOpen.value) {
-        isOpen.value = true
-        return
-    }
-
-    if (type === 'enter') {
-        if (highlightedIndex.value >= 0) {
-            const option = options.value[highlightedIndex.value]
-            if (option) {
-                updateValue(option.value)
-            }
-        }
-        return
-    }
-
-    const direction = type === 'down' ? 1 : -1
-    const newIndex = highlightedIndex.value + direction
-    if (newIndex >= 0 && newIndex < options.value.length) {
-        highlightedIndex.value = newIndex
-        scrollToHighlighted()
-    }
-}
-
-function scrollToHighlighted() {
+const computedStyle = computed(() => {
+    const input = inputRef.value
     const dropdown = dropdownRef.value
-    const optionEl = dropdown?.querySelectorAll('li')[highlightedIndex.value]
-    if (optionEl && dropdown) {
-        optionEl.scrollIntoView({ block: 'nearest' })
+    if (!input || !dropdown) {
+        return {}
     }
-}
-
-function handleClickOutside(e: MouseEvent) {
-    if (!isOpen.value) return
-    if (!inputRef.value?.contains(e.target as Node) &&
-        !dropdownRef.value?.contains(e.target as Node)) {
-        isOpen.value = false
+    const { top, left, width } = input.getBoundingClientRect()
+    const { height } = dropdown.getBoundingClientRect()
+    return {
+        top: `${top + height}px`,
+        left: `${left}px`,
+        minWidth: `${width - 20}px`
     }
-}
-
-onMounted(() => {
-    document.addEventListener('click', handleClickOutside)
-})
-
-onBeforeUnmount(() => {
-    document.removeEventListener('click', handleClickOutside)
 })
 </script>
 

@@ -2,64 +2,34 @@
   <div class="demo-select">
     <h2>基础用法</h2>
     <t-select v-model="value1" placeholder="请选择">
-      <t-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
+      <t-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </t-select>
     <p>选中值: {{ value1 }}</p>
 
     <h2>多选</h2>
     <t-select v-model="value2" multiple placeholder="请选择">
-      <t-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
+      <t-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </t-select>
     <p>选中值: {{ value2 }}</p>
 
     <h2>可清空</h2>
     <t-select v-model="value3" clearable placeholder="请选择">
-      <t-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
+      <t-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </t-select>
     <p>选中值: {{ value3 }}</p>
 
     <h2>禁用状态</h2>
     <t-select v-model="value4" disabled placeholder="请选择">
-      <t-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
+      <t-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </t-select>
 
     <h2>不同尺寸</h2>
     <t-select v-model="value5" size="small" placeholder="小尺寸">
-      <t-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
+      <t-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </t-select>
-    
+
     <t-select v-model="value6" size="mini" placeholder="迷你尺寸">
-      <t-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
+      <t-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </t-select>
   </div>
 </template>
@@ -70,7 +40,14 @@ import { ref } from 'vue'
 const options = [
   { value: 'option1', label: '选项1' },
   { value: 'option2', label: '选项2' },
-  { value: 'option3', label: '选项3' }
+  { value: 'option3', label: '选项3' },
+  { value: 'option4', label: '选项4' },
+  { value: 'option5', label: '选项5' },
+  { value: 'option6', label: '选项6' },
+  { value: 'option7', label: '选项7' },
+  { value: 'option8', label: '选项8' },
+  { value: 'option9', label: '选项9' },
+  { value: 'option10', label: '选项10' },
 ]
 
 const value1 = ref('')
