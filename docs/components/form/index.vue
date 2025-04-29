@@ -4,7 +4,7 @@
             <t-input type="text" v-model="form.name" />
         </t-form-item>
         <t-form-item label="省份" prop="province">
-            <t-select v-model="form.province" placeholder="请选择省份">
+            <t-select v-model="form.province" placeholder="请选择省份" clearable>
                 <t-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
             </t-select>
         </t-form-item>
@@ -31,10 +31,9 @@ const options = [
 ]
 const rules = {
     name: [
-        { required: true, message: '请输入姓名' },
-        { min: 3, max: 5, message: '长度在 3 到 5 个字符' }
+        { required: true, message: '请输入姓名', trigger: 'blur' },
     ],
-    province: []
+    province: [{ required: true, message: '请选择省份' }]
 }
 
 

@@ -5,7 +5,7 @@ Schema.warning = () => {}
 export function useFormValidation<T extends Values>(form: T, rules: Rules) {
     const errors = ref<ValidateFieldsError>({})
 
-    const validateField: (name: keyof T) => Promise<boolean> = (name: keyof T) => {
+    const validateField: (name: keyof T) => Promise<boolean> =  (name: keyof T) => {
         const singleForm = {
             [name]: form[name]
         }

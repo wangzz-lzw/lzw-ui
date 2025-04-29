@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { provide, PropType } from 'vue';
-import type {Rules} from 'async-validator'
+import type { Rules } from 'async-validator'
 // Define or import the Rules type
 
 defineOptions({
@@ -19,14 +19,14 @@ const props = defineProps({
         default: () => ({})
     },
     rules: {
-        type:Object as  PropType<Rules>,
+        type: Object as PropType<Rules>,
         default: () => ({})
     }
 })
 
 
 
-provide('form', { rules: props.rules, model: props.model});
+provide('form', { rules: props.rules, model: props.model });
 
 
 </script>

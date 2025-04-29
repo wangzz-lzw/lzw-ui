@@ -1,4 +1,5 @@
 @use "../common/base.scss" as *;
+@use "../common/mixins.scss" as *;
 .error {
   color: $t-danger;
   font-size: 12px;
@@ -17,16 +18,29 @@
     margin-right: 5px;
   }
 }
-.validate-error {
-  & * {
+.is-error {
+  @include b("input") {
     border-color: $t-danger !important;
+    box-shadow: 0 0 0 1px $t-danger-lighten !important;
     &:focus-within {
       border-color: $t-danger !important;
-      box-shadow: 0 0 0 1px $t-danger-lighten !important;
     }
     &:hover {
       border-color: $t-danger !important;
       box-shadow: 0 0 0 1px $t-danger-lighten !important;
+    }
+  }
+  @include b("select") {
+    @include e("wrapper") {
+      border-color: $t-danger !important;
+      box-shadow: 0 0 0 1px $t-danger-lighten !important;
+      &:focus-within {
+        border-color: $t-danger !important;
+      }
+      &:hover {
+        border-color: $t-danger !important;
+        box-shadow: 0 0 0 1px $t-danger-lighten !important;
+      }
     }
   }
 }
