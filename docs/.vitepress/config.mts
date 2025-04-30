@@ -28,6 +28,7 @@ export default defineConfig({
             { text: "Model", link: "/components/model/" },
             { text: "Select", link: "/components/select/" },
             { text: "Popup", link: "/components/popup/" },
+            { text: "Message", link: "/components/message/" },
           ],
         },
       ],

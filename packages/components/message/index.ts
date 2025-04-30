@@ -1,10 +1,9 @@
-import type { App } from "vue";
+import { withInstall } from '@lzwui/utils'
+import Message from './src/message.vue'
+import { message } from './src/message'
 
-import Message from "./src/message.vue";
-Message.install = (app:App) => {
-    app.component(Message.name!, Message);
-};
-export const TMessage = Message;
+export const TMessage = Object.assign(withInstall(Message), message)
 
-export default TMessage;
+export default TMessage
 
+export * from './src/message'

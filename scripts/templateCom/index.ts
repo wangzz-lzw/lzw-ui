@@ -1,10 +1,9 @@
 import type { App } from "vue";
+import { withInstall } from "@lzwui/utils";
 
 import TemplateCom from "./src/templateCom.vue";
-TemplateCom.install = (app:App) => {
-    app.component(TemplateCom.name!, TemplateCom);
-};
-export const TTemplateCom = TemplateCom;
+
+export const TTemplateCom = withInstall(TemplateCom);
 
 export default TTemplateCom;
 

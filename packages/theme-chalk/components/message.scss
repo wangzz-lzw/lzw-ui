@@ -1,0 +1,91 @@
+@use "../common/base" as *;
+@use "../common/mixins" as *;
+
+@include b(message) {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 380px;
+  box-sizing: border-box;
+  padding: 15px 15px 15px 20px;
+  border-radius: 4px;
+  background-color: $t-text-color;
+  box-shadow: $t-shadow;
+  transition: opacity 0.3s, transform 0.4s;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+
+  @include e(icon) {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+
+  @include e(content) {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 0;
+    margin: 0;
+  }
+
+  @include e(close) {
+    margin-left: 10px;
+    cursor: pointer;
+    color: $t-placeholder-color;
+    font-size: 16px;
+
+    &:hover {
+      color: $t-text-color-secondary;
+    }
+  }
+
+  @include m(center) {
+    justify-content: center;
+  }
+
+  @include m(success) {
+    background-color: $t-success-lighten;
+    color: $t-success;
+
+    .t-message__icon {
+      color: $t-success;
+    }
+  }
+
+  @include m(warning) {
+    background-color: $t-warning-lighten;
+    color: $t-warning;
+
+    .t-message__icon {
+      color: $t-warning;
+    }
+  }
+
+  @include m(info) {
+    background-color: $t-info-lighten;
+    color: $t-info;
+
+    .t-message__icon {
+      color: $t-info;
+    }
+  }
+
+  @include m(error) {
+    background-color: $t-danger-lighten;
+    color: $t-danger;
+
+    .t-message__icon {
+      color: $t-danger;
+    }
+  }
+
+  @include m(fade) {
+    &-enter-from,
+    &-leave-to {
+      opacity: 0;
+      transform: translate(-50%, -100%);
+    }
+  }
+}
