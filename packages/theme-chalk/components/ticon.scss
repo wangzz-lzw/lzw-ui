@@ -1,0 +1,10 @@
+@use "../common/base.scss" as *;
+@use "../common/mixins.scss" as *;
+
+@include b(icon) {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  vertical-align: -0.1em;
+}
