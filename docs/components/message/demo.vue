@@ -1,19 +1,19 @@
 <template>
   <div class="demo-message">
     <h3>基础用法</h3>
-    <t-button @click="showMessage">显示消息</t-button>
+    <t-button @click="showMessage" type="primary">显示消息</t-button>
 
     <h3>不同状态</h3>
-    <t-button @click="showSuccess">成功</t-button>
-    <t-button @click="showWarning">警告</t-button>
-    <t-button @click="showInfo">信息</t-button>
-    <t-button @click="showError">错误</t-button>
+    <t-button @click="showSuccess" type="success">成功</t-button>
+    <t-button @click="showWarning" type="warning">警告</t-button>
+    <t-button @click="showInfo" type="info">信息</t-button>
+    <t-button @click="showError" type="danger">错误</t-button>
 
     <h3>可关闭</h3>
-    <t-button @click="showClosableMessage">可关闭消息</t-button>
+    <t-button @click="showClosableMessage" type="primary">可关闭消息</t-button>
 
     <h3>自定义时长</h3>
-    <t-button @click="showLongMessage">显示5秒</t-button>
+    <t-button @click="showLongMessage" type="primary">显示5秒</t-button>
   </div>
 </template>
 
