@@ -10,12 +10,13 @@
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s;
-  border-radius: 26px;
+  border-radius: 20px;
   box-sizing: border-box;
   position: relative;
   /* 指定大小和圆角 */
   /* 默认的背景色是半透明黑色 */
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: $t-bg-color;
+  border: 1px solid $t-border-color;
   &:hover {
     border-color: $t-primary;
   }
@@ -36,8 +37,8 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     margin: 0;
     &:checked {
-      border-color: #4c8dff;
-      background-color: #4c8dff;
+      border-color: $t-border-color;
+      background-color: $t-primary;
       &:after {
         left: calc(52px - 26px);
       }
@@ -49,12 +50,12 @@
       transform: translateY(-50%);
       left: 8px;
       /* 长宽与父级的宽相同，并指定圆角*/
-      width: 18px;
-      height: 18px;
-      border-radius: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 8px;
       background-color: #fff;
       /* 阴影是用来划分边界的 */
-      box-shadow: 0 0 2px #999;
+      box-shadow: $t-shadow;
       /* 为了让开关有过渡效果，要使用transition属性。这个属性性能消耗大，要避免大规模使用 */
       transition: right 0.5s;
     }
