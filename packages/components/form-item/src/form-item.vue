@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts">
-import { inject, watch } from 'vue';
-import type { FormProvider } from '../../form/src/form'
+import { inject, watch, computed, ComputedRef } from 'vue';
+import type { FormProvider, IRule } from '../../form/src/form'
 import { useFormValidation } from '@lzwui/utils'
 
 defineOptions({
@@ -36,53 +36,38 @@ const { rules, model } = formProvider;
 
 const { validateField, errors } = useFormValidation(model, rules);
 
-// const validateFieldOnBlur = () => {
-//     console.log(rules[props.prop as keyof typeof model].trigger, 'rules[props.prop as keyof typeof model].trigger')
-//     if (rules[props.prop as keyof typeof model].trigger) {
-//         rules[props.prop as keyof typeof model].trigger.includes('blur') && validateField(props.prop as keyof typeof model);
-//     } else {
-//         validateField(props.prop as keyof typeof model);
-//     }
-// }
-// watch(() => model[props.prop as keyof typeof model], () => {
-//     if (rules[props.prop as keyof typeof model].trigger) {
-//         rules[props.prop as keyof typeof model].trigger.includes('change') && validateField(props.prop as keyof typeof model);
-//     } else {
-//         validateField(props.prop as keyof typeof model);
-//     }
-// })
-// 获取当前字段的校验规则
-const getFieldRule = () => {
-    const fieldKey = props.prop as keyof typeof model;
-    return rules[fieldKey];
-}
 
-// 统一校验触发逻辑
-const shouldValidate = (triggerType: 'blur' | 'change') => {
-    const rule = getFieldRule();
-    if (!rule) return false;
-
-    // 处理未配置trigger的情况（默认都触发）
-    if (!rule.trigger) return true;
-
-    // 处理数组或字符串形式
-    return Array.isArray(rule.trigger)
-        ? rule.trigger.includes(triggerType)
-        : rule.trigger === triggerType;
+const itemRlues: ComputedRef<IRule[]> = computed(() => {
+    if (rules && props.prop && rules[props.prop]) {
+        return rules[props.prop]
+    } else {
+        return []
+    }
+})
+const getTriggeredRules = (trigger?: string) => {
+    const rules = itemRlues.value
+    if (rules) {
+        return rules.filter(rule => {
+            if (!rule.trigger || !trigger) return true
+            return rule.trigger && rule.trigger === trigger
+        })
+    } else {
+        return []
+    }
 }
 
 // 失焦校验
 const validateFieldOnBlur = () => {
-    if (shouldValidate('blur')) {
-        validateField(props.prop as keyof typeof model);
-    }
+    const triggerRules = getTriggeredRules('blur')
+    if (triggerRules.length === 0) return
+    else validateField(props.prop as keyof typeof model, triggerRules);
 }
 
 // 值变化校验
 watch(() => model[props.prop as keyof typeof model], () => {
-    if (shouldValidate('change')) {
-        validateField(props.prop as keyof typeof model);
-    }
+    const triggerRules = getTriggeredRules('change')
+    if (triggerRules.length === 0) return
+    else validateField(props.prop as keyof typeof model, triggerRules);
 })
 
 </script>

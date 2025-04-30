@@ -1,6 +1,6 @@
 <template>
     <div :class="[bem.b(), size && bem.m(size), { 'is-disabled': disabled }, { 'is-readonly': readonly }]">
-        <input :class="[bem.e('inner')]" ref="input" @input="handleInput" :readonly="disabled" />
+        <input :class="[bem.e('inner')]" ref="input" @input="handleInput" :readonly="readonly" :disabled="disabled" />
     </div>
 </template>
 

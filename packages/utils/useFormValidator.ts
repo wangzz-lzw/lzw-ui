@@ -1,19 +1,20 @@
 import { ref } from 'vue'
 import Schema from 'async-validator'
 import type { Rules, Values, ValidateFieldsError } from 'async-validator'
+import { IRule } from '@/components/form/src/form'
 Schema.warning = () => {}
 export function useFormValidation<T extends Values>(form: T, rules: Rules) {
     const errors = ref<ValidateFieldsError>({})
 
-    const validateField: (name: keyof T) => Promise<boolean> =  (name: keyof T) => {
+    const validateField: (name: keyof T, triggerRules: IRule[]) => Promise<boolean> = (name: keyof T, triggerRules: IRule[]) => {
         const singleForm = {
             [name]: form[name]
         }
         const singleSchema = {
-            [name]: rules[name as string]
+            [name]: triggerRules
         }
         const singleValidator = new Schema(singleSchema)
-        // 构造 options 传递 trigger
+
         return new Promise(resolve => {
             singleValidator.validate(singleForm, error => {
                 errors.value[name as string] = error!
