@@ -1,11 +1,12 @@
 <template>
-    <div></div>
+    <div :class="[bem.b()]"></div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{}>();
+import { bem, templateComProps } from './templateCom';
+const props = defineProps(templateComProps);
 
-const emits = defineEmits<{}>();
+const emits = defineEmits();
 </script>
 
 <style scoped lang="scss"></style>
