@@ -17,13 +17,19 @@ export const useNamespace = (block: string) => {
   const be = (blockSuffix?: string, element?: string) =>
     blockSuffix && element
       ? _bem(unref(namespace), block, blockSuffix, element, '')
-          : ''
+      : ''
+  
+  const is = (blockSuffix: string) =>
+    blockSuffix === block || blockSuffix.startsWith(`${block}-`)
+
+
   return {
     namespace,
     b,
     e,
     m,
     be,
+    is
   }
 }
 

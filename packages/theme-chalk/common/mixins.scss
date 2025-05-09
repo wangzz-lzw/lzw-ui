@@ -29,3 +29,18 @@ $modifier-sel: "--" !default;
     }
   }
 }
+
+@mixin when($condition) {
+  @if $condition {
+    @content;
+  }
+}
+
+@mixin is($state) {
+  $selector: &;
+  @at-root {
+    #{$selector + "--is-" + $state} {
+      @content;
+    }
+  }
+}

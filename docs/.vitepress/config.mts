@@ -31,6 +31,7 @@ export default defineConfig({
             { text: "Message", link: "/components/message/" },
             { text: "icon", link: "/components/icon/" },
             { text: "switch", link: "/components/switch/" },
+            { text:"table 表格",link:"/components/table/"}
           ],
         },
       ],
