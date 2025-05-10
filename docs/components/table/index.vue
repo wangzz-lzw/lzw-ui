@@ -1,5 +1,5 @@
 <template>
-    <t-table sortable :columns="tableColumns" :data="tableData"></t-table>
+    <t-table  :columns="tableColumns" :data="tableData"></t-table>
 </template>
 
 <script setup lang="ts">
@@ -10,6 +10,7 @@ const tableColumns = [
         prop: 'name',
         width: 150,
         fixed: true,
+        sortable:true
     },
     {
         label: 'Age',

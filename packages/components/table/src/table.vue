@@ -3,13 +3,13 @@
     <table :class="[bem.e('inner')]">
       <thead v-if="showHeader">
         <tr :class="[bem.e('header-row')]">
-          <th v-for="column in columns" :key="column.prop" :class="[
+          <th v-for="(column,$index) in columns" :key="column.prop" :class="[
             bem.e('header-cell'),
             headerCellClassName?.({ column, columnIndex: $index }),
             { [bem.is('sortable')]: column.sortable },
           ]" :style="headerCellStyle?.({ column, columnIndex: $index })" @click="handleSortClick(column)">
             <div :class="bem.e('cell-content')">
-              {{ column.label }}
+              {{ column.label }} 
               <span v-if="column.sortable" :class="[
                 bem.e('sort-icon'),
                 {
