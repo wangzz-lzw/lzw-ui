@@ -19,8 +19,8 @@ export const useNamespace = (block: string) => {
       ? _bem(unref(namespace), block, blockSuffix, element, '')
       : ''
   
-  const is = (blockSuffix: string) =>
-    blockSuffix === block || blockSuffix.startsWith(`${block}-`)
+  const is = (name: string, state: string | boolean) =>
+    state ? `is-${name}` : ''
 
 
   return {

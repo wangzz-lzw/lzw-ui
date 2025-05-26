@@ -31,7 +31,8 @@ export default defineConfig({
             { text: "Message", link: "/components/message/" },
             { text: "icon", link: "/components/icon/" },
             { text: "switch", link: "/components/switch/" },
-            { text:"table 表格",link:"/components/table/"}
+            { text: "table 表格", link: "/components/table/" },
+            { text: "VirtualList 虚拟列表", link: "/components/virtual-list/" },
           ],
         },
       ],

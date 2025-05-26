@@ -6,16 +6,14 @@
           <th v-for="(column, $index) in columns" :key="column.prop" :class="[
             bem.e('header-cell'),
             headerCellClassName?.({ column, columnIndex: $index }),
-            { [bem.is('sortable')]: column.sortable },
+            [bem.is('sortable', column.sortable!)],
           ]" :style="headerCellStyle?.({ column, columnIndex: $index })" @click="handleSortClick(column)">
             <div :class="bem.e('cell-content')">
               {{ column.label }}
               <span v-if="column.sortable" :class="[
                 bem.e('sort-icon'),
-                {
-                  [bem.is('ascending')]: sortState.prop === column.prop && sortState.order === 'ascending',
-                  [bem.is('descending')]: sortState.prop === column.prop && sortState.order === 'descending',
-                }
+                [bem.is('ascending', sortState.prop === column.prop && sortState.order === 'ascending')],
+                [bem.is('descending', sortState.prop === column.prop && sortState.order === 'descending')]
               ]">
                 <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -30,7 +28,7 @@
         <tr v-for="(row, rowIndex) in data" :key="rowIndex" :class="[
           bem.e('row'),
           rowClassName?.({ row, rowIndex }),
-          { [bem.is('current')]: highlightCurrentRow && currentRow === row },
+          [bem.is('current', highlightCurrentRow && currentRow === row)],
         ]" :style="rowStyle?.({ row, rowIndex })" @click="handleRowClick(row)">
           <td v-for="(column, $index) in columns" :key="column.prop" :class="[
             bem.e('cell'),
@@ -56,6 +54,8 @@ const sortState = ref({
   prop: props.defaultSort.prop,
   order: props.defaultSort.order
 })
+
+
 
 const sortedData = computed(() => {
   if (!sortState.value.prop) return props.data

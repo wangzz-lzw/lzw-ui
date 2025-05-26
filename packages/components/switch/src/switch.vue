@@ -8,11 +8,10 @@
 import { bem, switchProps } from './switch';
 const props = defineProps(switchProps);
 
-const emits = defineEmits<{}>();
-
 
 const handleInputChange = (event: Event) => {
-    console.log(event.target.checked)
+    const target = event.target as HTMLInputElement;
+    console.log(target.checked);
 }
 </script>
 
