@@ -27,7 +27,7 @@ export const virtualListProps = {
   // 缓冲区大小（上下额外渲染的项目数量）
   buffer: {
     type: Number,
-    default: 30, // 增加默认缓冲区大小
+    default: 10, // 增加默认缓冲区大小
   },
   // 节流时间
   throttleTime: {

@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, defineProps } from "vue";
 import { buttonProps, bem } from "./button";
 
 defineOptions({

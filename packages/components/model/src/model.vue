@@ -28,7 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineExpose } from 'vue'
 import { propsDefinition } from './model';
 defineOptions({
     name: "t-model"
