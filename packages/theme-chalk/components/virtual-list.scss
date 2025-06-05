@@ -5,7 +5,23 @@
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
+
+  @include e(phantom) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  @include e(container) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
 
   @include e(item) {
     position: absolute;

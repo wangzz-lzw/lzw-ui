@@ -4,6 +4,6 @@ import demo1 from './demo.vue'
 
 # virtual 虚拟列表
 
-<preview comp-name="virtual" demo-name="demo">
+<preview comp-name="virtual-list" demo-name="demo">
   <demo1/>
 </preview>

@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-06-05T03:54:31.531Z",
+  "files": [
+    {
+      "filePath": "/home/wangzz/lzw-ui/packages/components/virtual-list/src/virtual-list.ts",
+      "language": "typescript",
+      "totalLines": 309,
+      "codeLines": 214,
+      "commentLines": 54,
+      "emptyLines": 41,
+      "words": 674,
+      "chars": 5780,
+      "saves": 20,
+      "lastUpdated": "2025-06-05T03:54:31.531Z"
+    },
+    {
+      "filePath": "/home/wangzz/lzw-ui/packages/components/virtual-list/index.ts",
+      "language": "typescript",
+      "totalLines": 15,
+      "codeLines": 10,
+      "commentLines": 1,
+      "emptyLines": 4,
+      "words": 35,
+      "chars": 309,
+      "saves": 1,
+      "lastUpdated": "2025-06-05T03:28:39.498Z"
+    },
+    {
+      "filePath": "virtual-list.ts",
+      "language": "typescript",
+      "totalLines": 262,
+      "codeLines": 180,
+      "commentLines": 46,
+      "emptyLines": 36,
+      "words": 572,
+      "chars": 4851,
+      "saves": 0,
+      "lastUpdated": "2025-06-05T03:48:42.738Z"
+    }
+  ]
+}
