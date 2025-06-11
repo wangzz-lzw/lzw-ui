@@ -10,6 +10,8 @@ import demo1 from './demo.vue'
 
 # props
 
+## 自动部署测试
+
 | 参数 | 说明                                                                    | 类型   | 默认值    |
 | ---- | ----------------------------------------------------------------------- | ------ | --------- |
 | type | 按钮类型，可选值为 `primary` `success` `warning` `danger` `info` `text` | string | `default` |
