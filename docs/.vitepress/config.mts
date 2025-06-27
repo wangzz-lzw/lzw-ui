@@ -33,6 +33,7 @@ export default defineConfig({
             { text: "switch", link: "/components/switch/" },
             { text: "table 表格", link: "/components/table/" },
             { text: "VirtualList 虚拟列表", link: "/components/virtual-list/" },
+            { text: "DatePicker 日历", link: "/components/date-picker/" }
           ],
         },
       ],

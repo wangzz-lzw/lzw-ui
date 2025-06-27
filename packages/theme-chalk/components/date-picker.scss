@@ -1,0 +1,66 @@
+@use "../common/base.scss" as *;
+@use "../common/mixins.scss" as *;
+
+@include b(date-picker) {
+  @include e(input) {
+    width: 200px;
+  }
+  @include e(header) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  }
+  @include e(body) {
+    padding: 8px;
+  }
+  @include e(weekdays) {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 4px;
+
+    span {
+      padding: 4px 0;
+    }
+  }
+  @include e(dates) {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+
+    span {
+      padding: 4px 0;
+      cursor: pointer;
+      border-radius: 2px;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+
+      @include is(today) {
+        color: $t-primary;
+        font-weight: bold;
+      }
+
+      @include is(selected) {
+        background-color: $t-primary;
+        color: white;
+        border-radius: 50%;
+      }
+
+      @include is(disabled) {
+        color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

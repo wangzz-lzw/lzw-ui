@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // 获取组件名称参数
-const componentName = "virtual-list";
+const componentName = "date-picker";
 if (!componentName) {
   console.error('Please provide a component name');
   process.exit(1);
